@@ -2,7 +2,7 @@ import Swal from "sweetalert2";
 import UpdataCoffee from "../components/UpdataCoffee";
 import { Link } from "react-router-dom";
 
-const CoffeeCard = ({ coffee }) => {
+const CoffeeCard = ({ coffee, coffees, setCoffees}) => {
   const { _id, name, chef, supplier, taste, category, details, photo } = coffee;
 
   // delete from db
@@ -32,6 +32,8 @@ const CoffeeCard = ({ coffee }) => {
                   "Your coffee has been deleted.",
                   "success",
                 );
+                const remainCoffees = coffees.filter((cof ) => cof._id !==_id)
+                setCoffees(remainCoffees)
               }
             });
         }
